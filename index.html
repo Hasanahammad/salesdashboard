@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/chart.min.js"></script>
+    <link rel="stylesheet" href="/animate/animate.min.css">
+    <link rel="icon" type="image/x-icon" href="/icons/9.png">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
+</head>
+
+<body>
+    <div class="d-flex align-items-stretch ">
+        <div class="sidebar py-3" id="sidebar">
+            <h6 class="sidebar-heading">Main</h6>
+            <ul class="list-unstyled">
+                <li class="sidebar-list-item">
+                    <a onclick="dashboard()" class="sidebar-link text-muted collapsed" href="#"
+                        data-bs-target="#dashboardsDropdown" role="button" aria-expanded="false"
+                        data-bs-toggle="collapse">
+                        <img class="svg-icon svg-icon-md me-3" src="./icons/data.png" alt="data">
+                        <span class="sidebar-link-title">Dashboards</span></a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a onclick="sales()" class="sidebar-link text-muted " id="one" href="#"
+                        data-bs-target="#cmsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
+                        <img class="svg-icon svg-icon-md me-3" src="./icons/sales.png" alt="data">
+                        <span class="sidebar-link-title">Sales</span></a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a onclick="scm()" class="sidebar-link text-muted " href="#" data-bs-target="#widgetsDropdown"
+                        role="button" aria-expanded="false" data-bs-toggle="collapse">
+                        <img class="svg-icon svg-icon-md me-3" src="./icons/scm.png" alt="data">
+                        <span class="sidebar-link-title">SCM</span></a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a onclick="production()" class="sidebar-link text-muted " href="#"
+                        data-bs-target="#widgetsDropdown" role="button" aria-expanded="false" data-bs-toggle="collapse">
+                        <img class="svg-icon svg-icon-md me-3" src="./icons/production.png" alt="data">
+                        <span class="sidebar-link-title">Production</span></a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a onclick="finance()" class="sidebar-link text-muted " href="#" data-bs-target="#widgetsDropdown"
+                        role="button" aria-expanded="false" data-bs-toggle="collapse">
+                        <img class="svg-icon svg-icon-md me-3" src="./icons/finance.png" alt="data">
+                        <span class="sidebar-link-title">Finance</span></a>
+                </li>
+        </div>
+        <div class="page-holder bg-white-100">
+            <div class="container-fluid px-lg-4 px-xl-5">
+                <!-- Page Header-->
+                <div class="page-header">
+                    <h1 class="page-heading">Dashboard</h1>
+                </div>
+                <!-- dashboard -->
+                <section class="mb-3 mb-lg-5 animate__animated animate__fadeInLeft" id="dashboard">
+                    <div class="row mb-3">
+                        <div class="col-sm-12 text-center col-lg-12">
+                            <div class="row">
+                                <div class="col-sm-1 text-center">
+                                    <img data-bs-toggle="modal" onclick="salesqty()" data-bs-target="#salesord"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/4.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#salesord" class="text-center icon-p">
+                                        Sales Order</p>
+                                </div>
+                                <div class="col-sm-1 text-center"><img data-bs-toggle="modal" onclick="delivery()"
+                                        data-bs-target="#salesdelivery"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn"
+                                        src="/icons/delivery-truck.png" alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#salesdelivery"
+                                        class="text-center icon-p">Delivery</p>
+                                </div>
+                                <div class="col-sm-1 text-center"><img data-bs-toggle="modal" onclick="arinvoice()"
+                                        data-bs-target="#arinvoice"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/5.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#arinvoice" class="text-center icon-p">
+                                        Customer Invoice (DO)</p>
+                                </div>
+                                <div class="col-sm-1 text-center"><img data-bs-toggle="modal"
+                                        data-bs-target="#incomepay"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/6.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#incomepay" class="text-center icon-p">
+                                        A/R Invoice</p>
+                                </div>
+                                <div class="col-sm-1 text-center"><img data-bs-toggle="modal" data-bs-target="#customer"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/6.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#customer" class="text-center icon-p">
+                                        Customer</p>
+                                </div>
+                                <div class="col-sm-1 text-center">
+                                    <img data-bs-toggle="modal" data-bs-target="#salreturn"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/2.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#salreturn" class="text-center icon-p">
+                                        Sales Return</p>
+                                </div>
+
+
+                                <div class="col-sm-1 text-center">
+                                    <img data-bs-toggle="modal" data-bs-target="#salreturn"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/2.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#salreturn" class="text-center icon-p">
+                                        Adjust Journal</p>
+                                </div>
+                                <div class="col-sm-1 text-center"><img data-bs-toggle="modal" data-bs-target="#salesrpt"
+                                        class="img-fluid card-icon animate__animated animate__zoomIn" src="/icons/6.png"
+                                        alt="1">
+                                    <p data-bs-toggle="modal" data-bs-target="#salesrpt" class="text-center icon-p">
+                                        Sales Report</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Widget Type 9-->
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card card-h one" data-bs-toggle="modal" data-bs-target="#myModalone">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="bar-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card card-h two" data-bs-toggle="modal" data-bs-target="#myModaltwo">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1" style="position: absolute;">
+                                        <div class="col">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="bar-chart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card card-h three" data-bs-toggle="modal" data-bs-target="#myModalthree">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1" style="position: absolute;">
+                                        <div class="col">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="bar-chart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card card-h four" data-bs-toggle="modal" data-bs-target="#myModalfour">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="bar-chart3"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <input class="form-control" id="date" type="text" name="daterange"/> -->
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <!-- <canvas class="animate__animated animate__fadeIn" id="mixed-chart"></canvas> -->
+                            <iframe style="height: 410px; overflow:scroll; width: 100%" scrolling="no"
+                                src="http://localhost:8080/zab/totalincome" frameborder="0"></iframe>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <canvas class="animate__animated animate__fadeIn" id="doughnut-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sales -->
+                <div style="display: none;" class="container-fluid animate__animated animate__fadeInLeft" id="sales">
+                    <h1>Sales</h1>
+                    <div class="row mb-3">
+                        <!-- Widget Type 9-->
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 one" data-bs-toggle="modal" data-bs-target="#myModalone">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 two" data-bs-toggle="modal" data-bs-target="#myModaltwo">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart1"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 three" data-bs-toggle="modal" data-bs-target="#myModalthree">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart2"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 four" data-bs-toggle="modal" data-bs-target="#myModalfour">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart3"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <!-- Widget Type 9-->
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 one" data-bs-toggle="modal" data-bs-target="#myModalone">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 two" data-bs-toggle="modal" data-bs-target="#myModaltwo">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart1"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 three" data-bs-toggle="modal" data-bs-target="#myModalthree">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart2"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 four" data-bs-toggle="modal" data-bs-target="#myModalfour">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart3"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-secondary">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-success">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-danger">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-warning">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-info">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-light">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SCM -->
+                <div style="display: none;" class="container-fluid animate__animated animate__fadeInLeft" id="scm">
+                    <h1>SCM</h1>
+                    <div class="row mb-3">
+                        <!-- Widget Type 9-->
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 four" data-bs-toggle="modal" data-bs-target="#myModalone">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 three" data-bs-toggle="modal" data-bs-target="#myModaltwo">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart1"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 two" data-bs-toggle="modal" data-bs-target="#myModalthree">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart2"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 one" data-bs-toggle="modal" data-bs-target="#myModalfour">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart3"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <!-- Widget Type 9-->
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 four" data-bs-toggle="modal" data-bs-target="#myModalone">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 three" data-bs-toggle="modal" data-bs-target="#myModaltwo">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart1"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 two" data-bs-toggle="modal" data-bs-target="#myModalthree">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart2"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-4">
+                            <div class="card h-100 one" data-bs-toggle="modal" data-bs-target="#myModalfour">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div class="row gx-1">
+                                        <div class="col text-center">
+                                            <h4 class="card-num">$10,500</h4>
+                                            <span class="card-span">Total Income</span>
+                                        </div>
+                                    </div>
+                                    <!-- <canvas id="bar-chart3"></canvas> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-secondary">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-success">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-danger">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-warning">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-info">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-light">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Clark</td>
+                                <td>Kent</td>
+                                <td>clarkkent@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Peter</td>
+                                <td>Parker</td>
+                                <td>peterparker@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>John</td>
+                                <td>Carter</td>
+                                <td>johncarter@mail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Production -->
+                <div style="display: none;" class="container-fluid animate__animated animate__fadeInLeft"
+                    id="production">
+                    <h1>Production</h1>
+                    <div id="production-table"></div>
+                </div>
+
+                <!-- Finance -->
+                <div style="display: none;" class="container-fluid animate__animated animate__fadeInLeft" id="finance">
+                    <h1>Finance</h1>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalone">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Total Income</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModaltwo">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalthree">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalfour">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="salesdetail">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">A/R Credit Memo</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="salesorddetail"></div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="salesord">
+        <div class="modal-dialog modal-xl">
+            <div id="salesquot"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ardpinvoice">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">A/R DP Invoices</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Dunning">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Dunning Wizard</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="salesdelivery">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Sales Delivery</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="arinvoice">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">A/R Invoice</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="incomepay">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Incoming Payments</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="customer">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Customer</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="salesrpt">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Sales Reports</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="arcrdmemo">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">A/R Credit Memo</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="salreturn">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Return</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                console.log("label");
+            });
+        });
+    </script>
+</body>
+
+</html>
